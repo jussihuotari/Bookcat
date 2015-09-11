@@ -10,12 +10,11 @@ class Rack::PathInfoRewriter
   def call(env)
     env.delete('SCRIPT_NAME')
     parts = env['REQUEST_URI'].split('?')
-    env['PATH_INFO'] = parts[0]
+    env['PATH_INFO'] = parts[0].gsub(/[^\/.]+\//, "")
     env['QUERY_STRING'] = parts[1].to_s
     @app.call(env)
   end
 end
 
-#Rack::Handler::FastCGI.run  Rack::PathInfoRewriter.new(BookCat::Application)
 Rack::Handler::FastCGI.run Rack::PathInfoRewriter.new(Bookcat::Application)
 
