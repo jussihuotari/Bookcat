@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 scope Rails.application.config.rails_relative_url_root do
-  devise_for :users
+  devise_for :users, :skip => :registrations
   get 'welcome/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
