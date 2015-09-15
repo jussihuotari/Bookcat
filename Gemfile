@@ -34,6 +34,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'fcgi'
+gem 'mysql2', '~> 0.3.20' # https://github.com/rails/rails/issues/21544
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -24,5 +24,6 @@ module Bookcat
     config.active_record.raise_in_transactional_callbacks = true
 
     config.rails_relative_url_root = "/kirjahylly"
+    config.active_record.table_name_prefix = "bookcat_"
   end
 end

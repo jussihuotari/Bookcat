@@ -1,5 +1,6 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  config.active_record.table_name_prefix = "bookcat_prod_"
 
   # Code is not reloaded between requests.
   config.cache_classes = true
