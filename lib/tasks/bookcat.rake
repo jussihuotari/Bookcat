@@ -6,8 +6,17 @@ namespace :bookcat do
   task import: :environment do
     filename = ENV['file']
     puts "Importing file '#{filename}'." # http://stackoverflow.com/questions/825748/how-do-i-pass-command-line-arguments-to-a-rake-task
-    options = {key_mapping: {author_details: 'author'}}
+    key_mapping = {
+      author_details: 'author',
+      title: 'title',
+      isbn: 'isbn',
+      publisher: 'publisher',
+      date_published: 'date_published',
+      book_uuid: 'book_uuid'
+    }
+    options = {key_mapping: key_mapping, remove_unmapped_keys: true, value_converters: {date_published: BooksHelper::PublishDateConverter}}
     n = SmarterCSV.process(filename, options) do |array|
+      Book.create(array.first)
       puts array.first.inspect if rand(1..50)==1
     end
     puts "Imported #{n} rows."
