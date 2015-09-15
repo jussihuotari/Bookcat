@@ -14,8 +14,7 @@ scope Rails.application.config.rails_relative_url_root do
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  resources :books
 
   # Example resource route with options:
   #   resources :products do
