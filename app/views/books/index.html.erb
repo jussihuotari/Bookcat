@@ -1,6 +1,29 @@
 <div class="row">
   <div class="col-md-12">
-    Yhteensä <%= Book.count %> kirjaa
+    <h1>Omakirjasto</h1>
   </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <p>Yhteensä <%= Book.count %> kirjaa</p>
+  </div>
+</div>
+<div class="row">
+  <%# Book.limit(20).order("RAND()").each do |book| %>
+  <% Book.first(20).each do |book| %>
+    <div class="col-md-4">
+      <div class="book thumbnail">
+        <div class="caption">
+          <h3><%= book.title %></h3>
+          <p class="muted lead"><%= book.author %></p>
+          <% if !book.publisher.blank? %>
+            <p><%= book.publisher %></p>
+          <% end %>
+          <p><%= book.date_published.strftime("%Y") unless book.date_published.blank? %></p>
+          <p class="text-muted"><%= book.isbn %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
 
