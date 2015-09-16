@@ -9,7 +9,7 @@
       <div class="col-md-offset-2 col-md-8">
         <% prev_choice = flash[:previous]['choice'] %>
         <% human_text = prev_choice == "true" ? "varastoon" : "kiertoon" %>
-        <p class="text-muted">&quot;<%= flash[:previous]['title'] %>&quot; <%= human_text %>. <%= link_to "Vaihda", book_path(flash[:previous]['id'], undo: true) %>.</p>
+        <p class="text-muted">&quot;<%= flash[:previous]['title'] %>&quot; <%= human_text %>. <%= link_to "Undo", book_path(flash[:previous]['id'], undo: true) %>.</p>
       </div>
     </div>
   <% end %>

@@ -1,12 +1,20 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h1>Welcome</h1>
+      <h1>Tervetuloa</h1>
     </div>
   </div>
   <div class="row">
     <div class="col-md-6">
-      <p><%= Rails.env %> <%= request.fullpath %><br/> <%= request.env['RAILS_RELATIVE_URL_ROOT'] %></p>
+      <!--p><%= Rails.env %> <%= request.fullpath %><br/> <%= request.env['RAILS_RELATIVE_URL_ROOT'] %></p-->
+      <%= link_to "Käy sisään", books_path, class: 'btn btn-primary btn-lg' %>
     </div>
   </div>
+  <% if user_signed_in? %>
+    <div class="row" style="margin-top: 100px;">
+      <div class="col-md-6">
+        <%= link_to ".", destroy_user_session_path, method: :delete %>
+      </div>
+    </div>
+  <% end %>
 </div>
