@@ -3,6 +3,17 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .book {
   min-height: 340px;
+  position: relative;
+}
+.book span.overlay {
+  position: absolute;
+  right: -$jumbotron-padding / 2;
+  top: -$jumbotron-padding / 2;
+  font-size: $jumbotron-heading-font-size;
+  color: $brand-success;
+  &.recycle {
+    color: $brand-danger;
+  }
 }
 .book-registry-details {
   margin-top: 10*$padding-base-vertical;

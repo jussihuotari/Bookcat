@@ -24,6 +24,13 @@
               <p><%= book.date_published.strftime("%Y") unless book.date_published.blank? %></p>
               <p class="text-muted"><%= book.isbn %></p>
             </div>
+            <% if !book.choice.blank? %>
+              <% if book.choice == "recycle" %>
+                <span class="overlay glyphicon glyphicon-ban-circle recycle"></span>
+              <% else %>
+                <span class="overlay glyphicon glyphicon-ok-circle"></span>
+              <% end %>
+            <% end %>
           </div>
         <% end %>
       </div>

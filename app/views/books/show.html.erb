@@ -15,7 +15,7 @@
   <% end %>
   <div class="row">
     <div class="col-md-offset-2 col-md-8">
-      <div class="jumbotron text-center fade <%= book_class_from_age(@book.date_published) %>">
+      <div class="jumbotron book text-center fade <%= book_class_from_age(@book.date_published) %>">
         <h1><%= @book.title %></h1>
         <p class="lead"><%= @book.author.gsub('|'," · ") %></p>
         <div class="book-registry-details">
@@ -25,6 +25,13 @@
           <p><%= @book.date_published.strftime("%Y") unless @book.date_published.blank? %></p>
           <p class="text-muted"><%= @book.isbn %></p>
         </div>
+        <% if !@book.choice.blank? %>
+          <% if @book.choice == "recycle" %>
+            <span class="overlay glyphicon glyphicon-ban-circle recycle"></span>
+          <% else %>
+            <span class="overlay glyphicon glyphicon-ok-circle"></span>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
