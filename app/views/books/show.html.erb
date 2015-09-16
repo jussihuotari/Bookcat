@@ -1,0 +1,33 @@
+<div class="container">
+  <nav>
+    <ul class="nav nav-pills">
+      <li role="presentation"><%= link_to books_path do %><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Kirjasto<% end %></li>
+    </ul>
+  </nav>  
+  <div class="row">
+    <div class="col-md-offset-2 col-md-8">
+      <div class="jumbotron text-center <%= book_class_from_age(@book.date_published) %>">
+        <h1><%= @book.title %></h1>
+        <p class="lead"><%= @book.author.gsub('|'," · ") %></p>
+        <div class="book-registry-details">
+          <% if !@book.publisher.blank? %>
+            <p><%= @book.publisher %></p>
+          <% end %>
+          <p><%= @book.date_published.strftime("%Y") unless @book.date_published.blank? %></p>
+          <p class="text-muted"><%= @book.isbn %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container bottom-buttons">
+  <div class="row">
+    <div class="col-md-offset-2 col-md-4">
+      <p><%= button_to "Kiertoon", {action: :update, params: {to_keep: false}}, data: {disable_with: "Kiitos!"}, class: 'btn btn-lg btn-danger btn-block', method: :patch %></p>
+    </div>
+    <div class="col-md-4">
+      <p><%= button_to "Säilöön", {action: :update, params: {to_keep: true}}, data: {disable_with: "Voi voi..."}, class: 'btn btn-lg btn-success btn-block', method: :patch %></p>
+    </div>
+  </div>
+  <p class="visible-md visible-lg">&nbsp;</p>
+</div>

@@ -1,56 +1,38 @@
-<div class="row">
-  <div class="col-md-12">
-    <h1>Omakirjasto</h1>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <p>Yhteensä <%= Book.count %> kirjaa</p>
-  </div>
-</div>
-<div class="row">
-  <%# Book.limit(20).order("RAND()").each do |book| %>
-  <% @books.each do |book| %>
-    <div class="col-md-4">
-      <%
-        class_add = if !book.date_published.blank?
-          case 
-          when book.date_published < Date.parse('1960-01-01')
-            "age-50"
-          when book.date_published < Date.parse('1970-01-01')
-            "age-60"
-          when book.date_published < Date.parse('1980-01-01')
-            "age-70"
-          when book.date_published < Date.parse('1990-01-01')
-            "age-80"
-          when book.date_published < Date.parse('2000-01-01')
-            "age-90"
-          when book.date_published < Date.parse('2010-01-01')
-            "age-00"
-          when book.date_published > Date.parse('2010-01-01')
-            "age-10"
-          end
-        else
-          ""
-        end
-      %>
-      <div class="book thumbnail <%= class_add %>">
-        <div class="caption">
-          <h3><%= book.title %></h3>
-          <p class="lead"><%= truncate(book.author.gsub(/\|/, " · "), length: 90) %></p>
-          <% if !book.publisher.blank? %>
-            <p><%= book.publisher %></p>
-          <% end %>
-          <p><%= book.date_published.strftime("%Y") unless book.date_published.blank? %></p>
-          <p class="text-muted"><%= book.isbn %></p>
-        </div>
-      </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Omakirjasto</h1>
     </div>
-  <% end %>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <%= paginate @books %>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <p>Yhteensä <%= Book.count %> kirjaa</p>
+    </div>
+  </div>
+  <div class="row">
+    <%# Book.limit(20).order("RAND()").each do |book| %>
+    <% @books.each do |book| %>
+      <div class="col-md-4">
+        <%= link_to(book, {class: 'book-thumbnail'}) do %>
+          <div class="book thumbnail <%= book_class_from_age(book.date_published) %>">
+            <div class="caption">
+              <h3><%= book.title %></h3>
+              <p class="lead"><%= truncate(book.author.gsub(/\|/, " · "), length: 90) %></p>
+              <% if !book.publisher.blank? %>
+                <p><%= book.publisher %></p>
+              <% end %>
+              <p><%= book.date_published.strftime("%Y") unless book.date_published.blank? %></p>
+              <p class="text-muted"><%= book.isbn %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <%= paginate @books %>
+    </div>
   </div>
 </div>
 

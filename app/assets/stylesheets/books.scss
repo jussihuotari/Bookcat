@@ -4,6 +4,25 @@
 .book {
   min-height: 340px;
 }
+.book-registry-details {
+  margin-top: 10*$padding-base-vertical;
+  p {
+    font-size: $font-size-base;
+  }
+}
+.bottom-buttons {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: $zindex-navbar;
+}
+.book:hover {
+  box-shadow: 0 0 10px 2px rgba(92,184,116,.5);
+}
+a.book-thumbnail:hover {
+  text-decoration: none;
+}
 // http://www.colourlovers.com/blog/2007/08/07/wine-color-guide-for-quality-and-age
 .age-10 {
   background-color: #d8ffaa;
