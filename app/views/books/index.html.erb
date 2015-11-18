@@ -9,20 +9,21 @@
       <p>Yhteensä <%= Book.count %> kirjaa. Valitse kirja ja anna mennä</p>
     </div>
   </div>
-  <div class="row">
-    <%# Book.limit(20).order("RAND()").each do |book| %>
+  <div class="row book-index">
     <% @books.each do |book| %>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <%= link_to(book, {class: 'book-thumbnail'}) do %>
-          <div class="book thumbnail <%= book_class_from_age(book.date_published) %>">
+          <div class="book book-grid-item <%= book_class_from_age(book.date_published) %>">
             <div class="caption">
               <h3><%= book.title %></h3>
               <p class="lead"><%= truncate(book.author.gsub(/\|/, " · "), length: 90) %></p>
-              <% if !book.publisher.blank? %>
-                <p><%= book.publisher %></p>
-              <% end %>
-              <p><%= book.date_published.strftime("%Y") unless book.date_published.blank? %></p>
-              <p class="text-muted"><%= book.isbn %></p>
+              <p class="no-margin">
+                <% if !book.publisher.blank? %>
+                  <%= book.publisher %>
+                <% end %>
+                <%= book.date_published.strftime("%Y") unless book.date_published.blank? %>
+                <small class="text-muted"><%= book.isbn %></small>
+              </p>
             </div>
             <% if !book.choice.blank? %>
               <% if book.choice == "recycle" %>

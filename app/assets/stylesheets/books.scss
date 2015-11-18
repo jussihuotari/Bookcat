@@ -2,15 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .book {
-  min-height: 340px;
+  //min-height: 340px;
   position: relative;
 }
 .book span.overlay {
   position: absolute;
   right: -$jumbotron-padding / 2;
-  top: -$jumbotron-padding / 2;
+  top: -$jumbotron-padding / 4;
   font-size: $jumbotron-heading-font-size;
   color: $brand-success;
+  opacity: .75;
   &.recycle {
     color: $brand-danger;
   }
@@ -31,8 +32,29 @@
 .book:hover {
   box-shadow: 0 0 10px 2px rgba(92,184,116,.5);
 }
-a.book-thumbnail:hover {
+a.book-thumbnail:hover, a.book-grid-item:hover {
   text-decoration: none;
+}
+.book-grid-item .caption {
+  color: $text-color;
+}
+.book-grid-item {
+  padding: $padding-base-horizontal;
+  border: 1px solid $thumbnail-border;
+  border-bottom: 1px solid #999;
+  h3 {
+    margin-top: 0;
+  }
+  .no-margin {
+    margin-bottom: 0;
+  }
+}
+@media (min-width: $screen-sm-min) {
+  .book-grid-item {
+    margin-bottom: $grid-gutter-width;
+    border-bottom-color: $thumbnail-border;
+    min-height: 299px;
+  }
 }
 // http://www.colourlovers.com/blog/2007/08/07/wine-color-guide-for-quality-and-age
 .age-10 {
