@@ -3,11 +3,25 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .book {
   //min-height: 340px;
-  position: relative;
 }
+/* http://stackoverflow.com/a/21057727
+.book:after {
+  content: "";
+  background: rgba(88,88,88,.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+.book > * {
+  z-index: 10;
+}
+*/
 .book span.overlay {
   position: absolute;
-  right: -$jumbotron-padding / 2;
+  right: $jumbotron-padding / 4;
   top: -$jumbotron-padding / 4;
   font-size: $jumbotron-heading-font-size;
   color: $brand-success;
@@ -15,6 +29,18 @@
   &.recycle {
     color: $brand-danger;
   }
+}
+.stack {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  box-shadow: 
+  1px 1px   0 rgba(0,   0,   0,   0.100), 
+  3px 3px   0 rgba(255, 255, 255, 1.0), 
+  4px 4px   0 rgba(0,   0,   0,   0.125), 
+  6px 6px   0 rgba(255, 255, 255, 1.0),  
+  7px 7px   0 rgba(0,   0,   0,   0.150), 
+  9px 9px   0 rgba(255, 255, 255, 1.0),  
+  10px 10px 0 rgba(0,   0,   0,   0.175);
 }
 .book-registry-details {
   margin-top: 10*$padding-base-vertical;

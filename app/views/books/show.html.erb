@@ -15,7 +15,10 @@
   <% end %>
   <div class="row">
     <div class="col-md-offset-2 col-md-8">
-      <div class="jumbotron book text-center fade <%= book_class_from_age(@book.date_published) %>">
+      <%
+        bg_style = "background: #{book_color_overlay_from_age(@book.date_published)}, url('#{book_cover_librarything(@book)}'); background-size: cover;"
+      %>
+      <div class="jumbotron book stack text-center <%= book_class_from_age(@book.date_published) %> fade" style="<%= bg_style %>">
         <h1><%= @book.title %></h1>
         <p class="lead"><%= @book.author.gsub('|'," · ") %></p>
         <div class="book-registry-details">
